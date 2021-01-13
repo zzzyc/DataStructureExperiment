@@ -1,4 +1,4 @@
-/*by Êı¾İ½á¹¹ÓëËã·¨Êµ¼ùµÚ4Ğ¡×é*/
+/*Written by zycsolego*/
 #include<cstdio>
 #include<cstring>
 #include<algorithm>
@@ -135,7 +135,7 @@ int get_length(int n) {
 }
 
 int get_Scenic(int id) {
-	printf("ÇëÊäÈë%c¾°µãµÄÃû³Æ£º\n", id + 65);
+	printf("è¯·è¾“å…¥%cæ™¯ç‚¹çš„åç§°ï¼š\n", id + 65);
 	string A_name; cin >> A_name;
 	for(int i = 1; i <= s_count; i++) 
 		if(S[i].name == A_name) return i;
@@ -149,18 +149,18 @@ int get_Road(int id) {
 }
 
 void out_Scenic(int n) {
-	printf("¾°µã±êÖ¾                ¾°µãÃû³Æ                ¾°µãµØÖ·\n");
+	printf("æ™¯ç‚¹æ ‡å¿—                æ™¯ç‚¹åç§°                æ™¯ç‚¹åœ°å€\n");
 	for(int i = 1; i <= n; i++) {
 		printf("S%d", S[i].sign);
 		out_space(24 - get_length(S[i].sign) - 1);
 		printf("%s", S[i].name.c_str());
 		out_space(24 - S[i].name.length());
-		printf("%s%dºÅ\n\n", S[i].road.c_str(), S[i].road_pos);
+		printf("%s%då·\n\n", S[i].road.c_str(), S[i].road_pos);
 	}
 }
 
 void out_Road(int n) {
-	printf("µÀÂ·±êÖ¾                ¾àÀë(m)                 µÀÂ·Ãû                ÑØÂ·¾°µã\n");
+	printf("é“è·¯æ ‡å¿—                è·ç¦»(m)                 é“è·¯å                æ²¿è·¯æ™¯ç‚¹\n");
 	for(int i = 1; i <= n; i++) {
 		printf("R%d", R[i].sign);
 		out_space(24 - get_length(S[i].sign) - 1);
@@ -178,20 +178,20 @@ void out_Road(int n) {
 
 void input() {
 	freopen("input.in", "r", stdin);
-	printf("ÇëÊäÈë¾°µãµÄÊıÁ¿£º\n"); cin >> s_count;
+	printf("è¯·è¾“å…¥æ™¯ç‚¹çš„æ•°é‡ï¼š\n"); cin >> s_count;
 	for(int i = 1; i <= s_count; i++) {
 		S[i].sign = i;
-		printf("ÇëÊäÈëµÚ%d¸ö¾°µãµÄÃû³Æ£º\n", i); cin >> S[i].name;
-		printf("ÇëÊäÈëµÚ%d¸ö¾°µãËùÔÚÂ·£º\n", i); cin >> S[i].road;
-		printf("ÇëÊäÈëµÚ%d¸ö¾°µãÔÚÂ·µÄ¾ßÌåÎ»ÖÃ£º\n", i); cin >> S[i].road_pos;
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªæ™¯ç‚¹çš„åç§°ï¼š\n", i); cin >> S[i].name;
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªæ™¯ç‚¹æ‰€åœ¨è·¯ï¼š\n", i); cin >> S[i].road;
+		printf("è¯·è¾“å…¥ç¬¬%dä¸ªæ™¯ç‚¹åœ¨è·¯çš„å…·ä½“ä½ç½®ï¼š\n", i); cin >> S[i].road_pos;
 	}
 
-	printf("ÇëÊäÈëµÀÂ·µÄÊıÁ¿£º\n"); scanf("%d", &r_count);
+	printf("è¯·è¾“å…¥é“è·¯çš„æ•°é‡ï¼š\n"); scanf("%d", &r_count);
 	for(int i = 1; i <= r_count; i++) {
 		R[i].sign = i;
-		printf("ÇëÊäÈëµÚ%dÌõµÀÂ·Ãû£º\n", i); cin >> R[i].name;
-		printf("ÇëÊäÈëÕâÌõÂ·ÊÇºáÏò(1)»¹ÊÇ×İÏò(0)£º\n"); cin >> R[i].dirx;
-		printf("ÇëÊäÈë¸ÃµÀÂ·¾àÀë%sÖáµÄ¾àÀë£º\n", R[i].dirx == 1 ? "x" : "y"); cin >> R[i].distance;
+		printf("è¯·è¾“å…¥ç¬¬%dæ¡é“è·¯åï¼š\n", i); cin >> R[i].name;
+		printf("è¯·è¾“å…¥è¿™æ¡è·¯æ˜¯æ¨ªå‘(1)è¿˜æ˜¯çºµå‘(0)ï¼š\n"); cin >> R[i].dirx;
+		printf("è¯·è¾“å…¥è¯¥é“è·¯è·ç¦»%sè½´çš„è·ç¦»ï¼š\n", R[i].dirx == 1 ? "x" : "y"); cin >> R[i].distance;
 		
 		R[i].Scenic_cnt = 0;
 		for(int j = 1; j <= s_count; j++) {
@@ -221,12 +221,12 @@ void input() {
                 if(R[i].dirx) {
                     C[c_count].roadx = R[i].name;
                     C[c_count].roady = R[j].name;
-                    C[c_count].name = R[i].name + "Óë" + R[j].name + "½»²æ¿Ú";
+                    C[c_count].name = R[i].name + "ä¸" + R[j].name + "äº¤å‰å£";
                 }
                 else {
                 	C[c_count].roadx = R[j].name;
                     C[c_count].roady = R[i].name;
-                    C[c_count].name = R[j].name + "Óë" + R[i].name + "½»²æ¿Ú";
+                    C[c_count].name = R[j].name + "ä¸" + R[i].name + "äº¤å‰å£";
 				}
 				
             }
@@ -235,23 +235,23 @@ void input() {
 void query_Assign_Scenic() {
 	int To_num = get_Scenic(0);
 	if(!To_num) {
-		printf("¸Ã¾°µã²»´æÔÚ£¡\n");
+		printf("è¯¥æ™¯ç‚¹ä¸å­˜åœ¨ï¼\n");
 		return ; 
 	} 
 	
-	printf("¾°µã±êÖ¾                ¾°µãÃû³Æ                ¾°µãµØÖ·\n");
+	printf("æ™¯ç‚¹æ ‡å¿—                æ™¯ç‚¹åç§°                æ™¯ç‚¹åœ°å€\n");
 	printf("S%d", S[To_num].sign);
 	out_space(24 - get_length(S[To_num].sign) - 1);
 	printf("%s", S[To_num].name.c_str());
 	out_space(24 - S[To_num].name.length());
-	printf("%s%dºÅ\n\n", S[To_num].road.c_str(), S[To_num].road_pos);
+	printf("%s%då·\n\n", S[To_num].road.c_str(), S[To_num].road_pos);
 
 }
 
 void query_Adjoin_Scenic() {
 	int To_num = get_Scenic(0);
 	if(!To_num) {
-		printf("¸Ã¾°µã²»´æÔÚ£¡\n");
+		printf("è¯¥æ™¯ç‚¹ä¸å­˜åœ¨ï¼\n");
 		return ; 
 	} 
 	
@@ -262,11 +262,11 @@ void query_Adjoin_Scenic() {
 	} 
 	
 	if(!cnt) {
-		printf("¸Ã¾°µãÎŞÁÚ½Ó¾°µã£¡\n");
+		printf("è¯¥æ™¯ç‚¹æ— é‚»æ¥æ™¯ç‚¹ï¼\n");
 		return ;
 	}
 	
-	printf("¸Ã¾°µãÓĞ%d¸öÁÚ½Ó¾°µã\n", cnt);
+	printf("è¯¥æ™¯ç‚¹æœ‰%dä¸ªé‚»æ¥æ™¯ç‚¹\n", cnt);
 	int tcnt = 0;
 	for(int i = 1; i <= s_count; i++) {
 		if(i == To_num) continue;
@@ -280,18 +280,18 @@ void query_Adjoin_Scenic() {
 void Best_NowToAssign_Scenic() {
 	int To_numA = get_Scenic(0);
 	if(!To_numA) {
-		printf("¸Ã¾°µã²»´æÔÚ£¡\n");
+		printf("è¯¥æ™¯ç‚¹ä¸å­˜åœ¨ï¼\n");
 		return ; 
 	} 
 	
 	int To_numB = get_Scenic(1);
 	if(!To_numB) {
-		printf("¸Ã¾°µã²»´æÔÚ£¡\n");
+		printf("è¯¥æ™¯ç‚¹ä¸å­˜åœ¨ï¼\n");
 		return ; 
 	} 
 	
 	if(To_numA == To_numB) {
-		printf("ÊäÈëµÄÁ½¸ö¾°µãÏàÍ¬£¡\n");
+		printf("è¾“å…¥çš„ä¸¤ä¸ªæ™¯ç‚¹ç›¸åŒï¼\n");
 		return ;
 	}
 	
@@ -299,8 +299,8 @@ void Best_NowToAssign_Scenic() {
 	D.init();
 	D.get_All_Edges();
 	D.get_All_dist();
-	printf("´Ó%sµ½%sµÄ×î¶ÌÂ·¾àÀëÎª£º%d(m)\n", S[To_numA].name.c_str(), S[To_numB].name.c_str(), 12 * D.dist[To_numA][To_numB]);
-	printf("Â·ÏßÎª£º\n");
+	printf("ä»%såˆ°%sçš„æœ€çŸ­è·¯è·ç¦»ä¸ºï¼š%d(m)\n", S[To_numA].name.c_str(), S[To_numB].name.c_str(), 12 * D.dist[To_numA][To_numB]);
+	printf("è·¯çº¿ä¸ºï¼š\n");
 	stack<int> stk;
 	int now = To_numB;
 	while(now) {
@@ -324,7 +324,7 @@ void Best_NowToAssign_Scenic() {
 void Best_NowToAll_Scenic() {
 int To_numA = get_Scenic(0);
 	if(!To_numA) {
-		printf("¸Ã¾°µã²»´æÔÚ£¡\n");
+		printf("è¯¥æ™¯ç‚¹ä¸å­˜åœ¨ï¼\n");
 		return ; 
 	} 
 	
@@ -334,8 +334,8 @@ int To_numA = get_Scenic(0);
 	D.dijkstra(To_numA);
 	for(int To_numB = 1; To_numB <= s_count; To_numB++) { 
 		if(To_numA == To_numB) continue;
-		printf("´Ó%sµ½%sµÄ×î¶ÌÂ·¾àÀëÎª£º%d(m)\n", S[To_numA].name.c_str(), S[To_numB].name.c_str(), 12 * D.dist[To_numA][To_numB]);
-		printf("Â·ÏßÎª£º\n");
+		printf("ä»%såˆ°%sçš„æœ€çŸ­è·¯è·ç¦»ä¸ºï¼š%d(m)\n", S[To_numA].name.c_str(), S[To_numB].name.c_str(), 12 * D.dist[To_numA][To_numB]);
+		printf("è·¯çº¿ä¸ºï¼š\n");
 		stack<int> stk;
 		int now = To_numB;
 		while(now) {
@@ -359,23 +359,23 @@ int To_numA = get_Scenic(0);
 void Modify_Assign_Scenic() {
 	int To_numA = get_Scenic(0);
 	if(!To_numA) {
-		printf("¸Ã¾°µã²»´æÔÚ£¡\n");
+		printf("è¯¥æ™¯ç‚¹ä¸å­˜åœ¨ï¼\n");
 		return ; 
 	} 
 
 	while(true) {
-		printf("ÇëÊäÈëÄãÒªĞŞ¸ÄµÄĞÅÏ¢ÀàĞÍ£º\n");
-		printf("(1). ¾°µãÃû³Æ\n");
-		printf("(2). ¾°µãµØÖ·");
-		printf("(3). ĞŞ¸ÄÍê±Ï£¡ÍË³öĞŞ¸Ä£¡\n");
+		printf("è¯·è¾“å…¥ä½ è¦ä¿®æ”¹çš„ä¿¡æ¯ç±»å‹ï¼š\n");
+		printf("(1). æ™¯ç‚¹åç§°\n");
+		printf("(2). æ™¯ç‚¹åœ°å€");
+		printf("(3). ä¿®æ”¹å®Œæ¯•ï¼é€€å‡ºä¿®æ”¹ï¼\n");
 		int choice; cin >> choice;
 		if(choice == 1) {
-			printf("ÇëÊäÈëĞŞ¸ÄºóµÄ¾°µãÃû³Æ£º\n");
+			printf("è¯·è¾“å…¥ä¿®æ”¹åçš„æ™¯ç‚¹åç§°ï¼š\n");
 			cin >> S[To_numA].name;
-			printf("ĞŞ¸Ä³É¹¦£¡\n");
+			printf("ä¿®æ”¹æˆåŠŸï¼\n");
 		}
 		else if(choice == 2) {
-			printf("ÇëÊäÈëĞŞ¸ÄºóµÄ¾°µãËùÔÚµÀÂ·Ãû£º\n");
+			printf("è¯·è¾“å…¥ä¿®æ”¹åçš„æ™¯ç‚¹æ‰€åœ¨é“è·¯åï¼š\n");
 			string tname;
 			cin >> tname;
 			int flag = 0;
@@ -386,10 +386,10 @@ void Modify_Assign_Scenic() {
 					break;
 				}
 			}
-			if(!flag) printf("¸ÃµÀÂ·²»´æÔÚ£¡\n");
+			if(!flag) printf("è¯¥é“è·¯ä¸å­˜åœ¨ï¼\n");
 			else {
-				printf("¾°µãËùÔÚµÀÂ·ĞŞ¸Ä³É¹¦£¡\n");
-				printf("ÇëÊäÈëĞŞ¸ÄºóµÄ¾°µãÔÚËùÔÚµÀÂ·µÄÎ»ÖÃ£º\n");
+				printf("æ™¯ç‚¹æ‰€åœ¨é“è·¯ä¿®æ”¹æˆåŠŸï¼\n");
+				printf("è¯·è¾“å…¥ä¿®æ”¹åçš„æ™¯ç‚¹åœ¨æ‰€åœ¨é“è·¯çš„ä½ç½®ï¼š\n");
 				cin >> S[To_numA].road_pos;
 			}
 		}
@@ -398,7 +398,7 @@ void Modify_Assign_Scenic() {
 }
 
 void Show_Panoramagram(int n = 70, int m = 60) {
-	//getÏÂ×îÓÒÏÂ±ê 
+	//getä¸‹æœ€å³ä¸‹æ ‡ 
 	int r = m;
 	for(int i = 1; i <= n; i++)
 		for(int j = 1; j <= m; j++) 
@@ -412,7 +412,7 @@ void Show_Panoramagram(int n = 70, int m = 60) {
 		for(j = 0; j <= m; j++) {
 			if(exist[i][j]) {
 				int p = exist[i][j];
-				printf("¡¤%s", S[p].name.c_str());
+				printf("Â·%s", S[p].name.c_str());
 				printf("(%d, %d)", i, j);
 				j += S[p].name.length() + 6 + get_length(i) + get_length(j) - 1;
 			}
@@ -430,7 +430,7 @@ int TSP_pre[MAXV][MAX_SCENIC];
 void TSP() {
 	int To_numA = get_Scenic(0);
 	if(!To_numA) {
-		printf("¸Ã¾°µã²»´æÔÚ£¡\n");
+		printf("è¯¥æ™¯ç‚¹ä¸å­˜åœ¨ï¼\n");
 		return ; 
 	} 
 	
@@ -446,7 +446,7 @@ void TSP() {
 	for(int i = now; i < (1 << s_count); i++) {
 		i |= now;
 		
-		//Ã¶¾Ùµ±Ç°×´Ì¬µÄÎ²µã£¬ÒÔ¼°ÏÂÒ»¸öµã 
+		//æšä¸¾å½“å‰çŠ¶æ€çš„å°¾ç‚¹ï¼Œä»¥åŠä¸‹ä¸€ä¸ªç‚¹ 
 		for(int j = 0; j < s_count; j++) {
 			if(!(i >> j & 1)) continue;
 			
@@ -475,7 +475,7 @@ void TSP() {
 	++last;
 	stack<int> stk;
 	stk.push(last);
-	printf("×î¼Ñä¯ÀÀÂ·¾¶µÄ×ÜÂ·³ÌÎª£º%d(m)\n", val);
+	printf("æœ€ä½³æµè§ˆè·¯å¾„çš„æ€»è·¯ç¨‹ä¸ºï¼š%d(m)\n", val);
 	val = (1 << s_count) - 1;
 	while(TSP_pre[val][last]) {
 		stk.push(TSP_pre[val][last]);
@@ -484,7 +484,7 @@ void TSP() {
 		val = tval;
 	}
 	
-	printf("Â·ÏßÎª£º\n");
+	printf("è·¯çº¿ä¸ºï¼š\n");
 	int sz = stk.size();
 	int cnt = 0;
 	while(!stk.empty()) {
@@ -500,18 +500,18 @@ void main_operation() {
 	while(true) {
 		
 		printf("--------------------------------------------------\n");
-		printf("| 1. A¾°µãĞÅÏ¢²éÑ¯                               |\n");
-		printf("| 2. A¾°µãµÄÁÚ½Ó¾°µãĞÅÏ¢²éÑ¯                     |\n");
-		printf("| 3. ¸ø³ö´ÓA¾°µãµ½B¾°µãµÄ×î¼ÑÂ·Ïß                |\n");
-		printf("| 4. ¸ø³ö´ÓA¾°µãµ½ËùÓĞ¾°µãµÄ×î¼ÑÂ·Ïß             |\n"); 
-		printf("| 5. ĞŞ¸ÄA¾°µãĞÅÏ¢                               |\n");
-		printf("| 6. ÏÔÊ¾È«¾°Í¼                                  |\n");
-		printf("| 7. ÏÔÊ¾ËùÓĞ¾°µãĞÅÏ¢                            |\n");
-		printf("| 8. ÏÔÊ¾ËùÓĞµÀÂ·ĞÅÏ¢                            |\n");
-		printf("| 9. ÓÉA¾°µã³ö·¢ä¯ÀÀËùÓĞ¾°µãµÄ×î¼ÑÂ·Ïß           |\n");
-		printf("| 0. ÍË³ö                                        |\n");
+		printf("| 1. Aæ™¯ç‚¹ä¿¡æ¯æŸ¥è¯¢                               |\n");
+		printf("| 2. Aæ™¯ç‚¹çš„é‚»æ¥æ™¯ç‚¹ä¿¡æ¯æŸ¥è¯¢                     |\n");
+		printf("| 3. ç»™å‡ºä»Aæ™¯ç‚¹åˆ°Bæ™¯ç‚¹çš„æœ€ä½³è·¯çº¿                |\n");
+		printf("| 4. ç»™å‡ºä»Aæ™¯ç‚¹åˆ°æ‰€æœ‰æ™¯ç‚¹çš„æœ€ä½³è·¯çº¿             |\n"); 
+		printf("| 5. ä¿®æ”¹Aæ™¯ç‚¹ä¿¡æ¯                               |\n");
+		printf("| 6. æ˜¾ç¤ºå…¨æ™¯å›¾                                  |\n");
+		printf("| 7. æ˜¾ç¤ºæ‰€æœ‰æ™¯ç‚¹ä¿¡æ¯                            |\n");
+		printf("| 8. æ˜¾ç¤ºæ‰€æœ‰é“è·¯ä¿¡æ¯                            |\n");
+		printf("| 9. ç”±Aæ™¯ç‚¹å‡ºå‘æµè§ˆæ‰€æœ‰æ™¯ç‚¹çš„æœ€ä½³è·¯çº¿           |\n");
+		printf("| 0. é€€å‡º                                        |\n");
 		printf("--------------------------------------------------\n");
-		printf("ÇëÊäÈëÏàÓ¦µÄ²Ù×÷ĞòºÅ½øĞĞÏàÓ¦µÄ²Ù×÷£º\n");
+		printf("è¯·è¾“å…¥ç›¸åº”çš„æ“ä½œåºå·è¿›è¡Œç›¸åº”çš„æ“ä½œï¼š\n");
 		
 		int choice; cin >> choice;
 		switch(choice) {
@@ -525,7 +525,7 @@ void main_operation() {
 			case 8 : out_Road(r_count); break;
 			case 9 : TSP(); break;
 			case 0 : return ;
-			default : printf("ÊäÈë´íÎó£¡ÇëÖØĞÂÊäÈë£¡\n"); break;
+			default : printf("è¾“å…¥é”™è¯¯ï¼è¯·é‡æ–°è¾“å…¥ï¼\n"); break;
 		}
 	}
 }
@@ -533,6 +533,6 @@ int main()
 {
     input();
     main_operation();
-    printf("ÍË³ö³É¹¦£¡\n");
+    printf("é€€å‡ºæˆåŠŸï¼\n");
 	return 0;
 }
